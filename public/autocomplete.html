@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Autocomplete - Default functionality</title>
+  <link rel="stylesheet" href="script/jquery-ui/jquery-ui.css">
+  <script src="script/jquery.js"></script>
+  <script src="script/jquery-ui/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    function log( message ) {
+      $( "<div>" ).text( message ).prependTo( "#log" );
+      $( "#log" ).scrollTop( 0 );
+    }
+
+    $( "#tags" ).autocomplete({
+      source: "cards",
+      minLength: 2,
+      select: function( event, ui ) {
+        log( ui.item ?
+          ui.item.value :
+          "Nothing selected, input was " + this.value );
+      }
+    });
+  });
+  </script>
+</head>
+<body>
+ 
+<div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="tags">
+</div>
+
+<div class="ui-widget" style="margin-top:2em; font-family:Arial">
+  Result:
+  <div id="log" style="height: 100%; width: 90%; overflow: auto;" class="ui-widget-content"></div>
+</div> 
+ 
+</boml>
